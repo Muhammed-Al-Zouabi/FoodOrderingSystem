@@ -13,5 +13,7 @@ public class Customer extends User {
     @Override
     public void displayRole() {
         System.out.println("Role: Customer");
-    }public String getPhone() { return phone; }
+    }
+    public String getPhone() { return phone; }
+    public String getAddress() { return address; }
 }
