@@ -8,14 +8,11 @@ public class Order {
     private Customer customer;
     private List<Orderable> items;
     private double totalPrice;
-    private String status;
-
     public Order(String orderId, Customer customer) {
         this.orderId = orderId;
         this.customer = customer;
         this.items = new ArrayList<>();
         this.totalPrice = 0.0;
-        this.status = "New";
     }
 
     public void addItem(Orderable item) {
@@ -39,11 +36,8 @@ public class Order {
 
         // Polymorphism: The payment method handles the logic!
         paymentMethod.pay(totalPrice);
-
-        this.status = "Placed";
         System.out.println("Order " + orderId + " has been sent to the kitchen!");
     }
-
     // Getter for totalPrice (useful for testing later)
     public double getTotalPrice() { return totalPrice; }
 }
