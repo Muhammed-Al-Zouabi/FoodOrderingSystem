@@ -5,10 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("=== WELCOME TO THUNDER DELIVERY SYSTEM ===");
-        System.out.println(">> THUNDER: Your food, delivered as quick as lightning! ⚡");
 
-        // ---------------- RESTAURANTS ----------------
-
+        // Create restaurants and add some sample menu items
         Restaurant r1 = new Restaurant("Hey Doner");
         r1.addMenuItem(new MenuItem("Chicken Zurna Durum", 110.00, "Main"));
         r1.addMenuItem(new MenuItem("Meat Doner Portion", 220.00, "Main"));
@@ -24,54 +22,51 @@ public class Main {
         r3.addMenuItem(new MenuItem("Sebzeli Pizza", 150.00, "Pizza"));
         r3.addMenuItem(new MenuItem("Coca Cola Zero", 40.00, "Drink"));
 
-        // ---------------- CUSTOMER LOGIN ----------------
-
+        // Create a sample customer for the demo
         Customer customer = new Customer(
                 "Muhammed Al Zouabi",
                 "555-0000",
-                "Istanbul, Arel University"
+                "Istanbul"
         );
 
         System.out.println("\nUser Logged In: " + customer.getName());
 
-        // ---------------- BROWSE RESTAURANTS ----------------
-
-        System.out.println("\n>> BROWSING RESTAURANTS ON THUNDER APP...");
+        // Display available restaurants
+        System.out.println("\nAvailable Restaurants:");
         System.out.println("1. Hey Doner");
         System.out.println("2. Pidem");
         System.out.println("3. Little Caesars");
 
-        // ---------------- SELECT RESTAURANT ----------------
-
-        System.out.println("\n>> User selected: Pidem");
+        // For this demo, select one restaurant and show its menu
+        System.out.println("\nSelected Restaurant: Pidem");
         r2.displayMenu();
 
-        // ---------------- CREATE ORDER ----------------
-
+        // Create an order for the customer
         Order myOrder = new Order(77, customer);
 
-        System.out.println("\n>> Adding items to cart...");
+        // Add items to the order
+        System.out.println("\nAdding items to order...");
         myOrder.addItem(r2.getItem(0)); // Kiymali Pide
         myOrder.addItem(r2.getItem(1)); // Kasarli Pide
 
-        System.out.println("\n>> Order Total: $" + myOrder.getTotalAmount());
+        // Show total price
+        System.out.println("\nOrder Total: $" + myOrder.getTotalAmount());
 
-        // ---------------- CREDIT CARD PAYMENT ----------------
-
-        System.out.println("\n>> Processing Credit Card Payment...");
-        PaymentMethod myCard = new CreditCardPayment(
+        // Process payment using credit card
+        System.out.println("\nProcessing credit card payment...");
+        PaymentMethod cardPayment = new CreditCardPayment(
                 myOrder.getTotalAmount(),
                 "5555444433332222",
                 "12/28"
         );
-        myOrder.processPayment(myCard);
+        myOrder.processPayment(cardPayment);
 
-        // ---------------- CASH PAYMENT (POLYMORPHISM) ----------------
-
-        System.out.println("\n>> Testing Cash Payment Flow...");
-        PaymentMethod myCash = new CashPayment(myOrder.getTotalAmount());
-        myOrder.processPayment(myCash);
+        // Process payment using cash to demonstrate polymorphism
+        System.out.println("\nProcessing cash payment...");
+        PaymentMethod cashPayment = new CashPayment(myOrder.getTotalAmount());
+        myOrder.processPayment(cashPayment);
 
         System.out.println("\n=== DEMO FINISHED ===");
     }
 }
+
