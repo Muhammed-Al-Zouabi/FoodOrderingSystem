@@ -1,20 +1,21 @@
 package com.arel.oop;
 
-public class CreditCardPayment implements PaymentMethod {
+public class CreditCardPayment extends PaymentMethod {
     private String cardNumber;
-    private String cvv;
+    private String expiry;
 
-    public CreditCardPayment(String cardNumber, String cvv) {
+    public CreditCardPayment(double amount, String cardNumber, String expiry) {
+        super(amount);
         this.cardNumber = cardNumber;
-        this.cvv = cvv;
+        this.expiry = expiry;
     }
 
     @Override
-    public void pay(double amount) {
-        System.out.println("\nProcessing Payment...");
-        // Simulates verifying the card
-        System.out.println("Card Used: **** **** **** " + cardNumber.substring(cardNumber.length() - 4));
-        System.out.println("Payment of " + amount + " TL Successful.");
+    public boolean processPayment() {
+        if(cardNumber.length() == 16) {
+            System.out.println("Paying $" + amount + " with Card ending in " + cardNumber.substring(12));
+            return true;
+        }
+        return false;
     }
-    public String getCvv() { return cvv; }
 }

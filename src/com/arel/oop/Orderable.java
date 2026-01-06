@@ -1,7 +1,6 @@
 package com.arel.oop;
 
 public interface Orderable {
+    void addToOrder();
     double getPrice();
-    String getName();
-    String getDescription();
 }

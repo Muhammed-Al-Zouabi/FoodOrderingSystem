@@ -1,18 +1,18 @@
 package com.arel.oop;
 
-public abstract class User {
-    private String id;
+public class User {
     private String name;
-    private String email;
+    private String phone;
 
-    public User(String id, String name, String email) {
-        this.id = id;
+    public User(String name, String phone) {
         this.name = name;
-        this.email = email;
+        this.phone = phone;
     }
 
     public String getName() { return name; }
-    public String getId() { return id; }
-    public String getEmail() { return email; }
-    public abstract void displayRole();
+    public String getPhone() { return phone; }
+    
+    public void displayInfo() {
+        System.out.println("User: " + name);
+    }
 }
