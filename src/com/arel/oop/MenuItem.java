@@ -34,6 +34,6 @@ public class MenuItem implements Orderable {
     // Display item information
     @Override
     public String toString() {
-        return name + " ($" + price + ")";
+    	return name + " ($" + price + ") - " + category;
     }
 }

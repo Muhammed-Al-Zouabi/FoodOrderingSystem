@@ -35,7 +35,7 @@ public class Order {
     // Process payment using the selected payment method
     public void processPayment(PaymentMethod method) {
         if (method.processPayment()) {
-            System.out.println("Order Paid! Receipt for: " + customer.getName());
+        	System.out.println("Order Paid! Order #" + orderId + " Receipt for: " + customer.getName());
         } else {
             System.out.println("Payment Failed.");
         }

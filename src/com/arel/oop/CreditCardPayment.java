@@ -17,10 +17,9 @@ public class CreditCardPayment extends PaymentMethod {
     @Override
     public boolean processPayment() {
         if (cardNumber.length() == 16) {
-            System.out.println(
-                "Paying $" + amount + " with card ending in " + cardNumber.substring(12)
-            );
-            return true;
+        	System.out.println("Paying $" + amount + " with Card ending in " + cardNumber.substring(12));
+        	System.out.println("Expiry date: " + expiry);
+        	return true;
         }
         return false;
     }
