@@ -2,17 +2,18 @@ package com.arel.oop;
 
 public class User {
     private String name;
-    private String phone;
+    private String phoneNumber;
 
-    public User(String name, String phone) {
+    public User(String name, String phoneNumber) {
         this.name = name;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getName() { return name; }
-    public String getPhone() { return phone; }
-    
-    public void displayInfo() {
-        System.out.println("User: " + name);
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }

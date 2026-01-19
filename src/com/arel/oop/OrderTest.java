@@ -6,7 +6,6 @@ import java.io.PrintStream;
 import org.junit.Test;
 
 public class OrderTest {
-
     @Test
     public void testAddItem() {
         Customer customer = new Customer("Test User", "555-1111", "Istanbul");
@@ -34,13 +33,9 @@ public class OrderTest {
         Order order = new Order(3, customer);
 
         order.addItem(new MenuItem("Sandwich", 30.0, "Main"));
-
-        // capture console output
         PrintStream oldOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-
-        // SUCCESS payment
         PaymentMethod successPayment = new PaymentMethod(order.getTotalAmount()) {
             @Override
             public boolean processPayment() {
@@ -48,8 +43,6 @@ public class OrderTest {
             }
         };
         order.processPayment(successPayment);
-
-        // FAILURE payment
         PaymentMethod failPayment = new PaymentMethod(order.getTotalAmount()) {
             @Override
             public boolean processPayment() {
@@ -57,8 +50,6 @@ public class OrderTest {
             }
         };
         order.processPayment(failPayment);
-
-        // restore output
         System.setOut(oldOut);
 
         String output = outContent.toString();

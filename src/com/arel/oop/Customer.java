@@ -3,10 +3,12 @@ package com.arel.oop;
 public class Customer extends User {
     private String address;
 
-    public Customer(String name, String phone, String address) {
-        super(name, phone); // Calls User constructor
+    public Customer(String name, String phoneNumber, String address) {
+        super(name, phoneNumber);
         this.address = address;
     }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 }
